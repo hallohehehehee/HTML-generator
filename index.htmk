@@ -1,10 +1,8 @@
-# Code Download Template
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Code Download Template</title>
+    <title>HTML Download Customizer</title>
     <link rel="shortcut icon" type="image/x-icon" href="LogoType" />
     <style>
         body {
