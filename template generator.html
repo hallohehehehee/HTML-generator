@@ -1,0 +1,69 @@
+# Code Download Template
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Code Download Template</title>
+    <link rel="shortcut icon" type="image/x-icon" href="LogoType" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customize Your Template</h1>
+    <label for="logoInput">Change Logo Type:</label>
+    <input type="text" id="logoInput" placeholder="Enter logo URL" />
+    <br>
+    <label for="linkInput">Change Frame Link:</label>
+    <input type="text" id="linkInput" placeholder="Enter frame URL" />
+    <br>
+    <label for="titleInput">Change Title:</label>
+    <input type="text" id="titleInput" placeholder="Enter new title" />
+    <br>
+    <button onclick="downloadCode()">Download Code</button>
+
+    <script>
+        function downloadCode() {
+            const logoType = document.getElementById('logoInput').value;
+            const frameLink = document.getElementById('linkInput').value;
+            const newTitle = document.getElementById('titleInput').value;
+
+            const code = `<!DOCTYPE html>
+<html>
+
+<head>
+    <title>${newTitle}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="${logoType}" />
+</head>
+<frameset rows="100%">
+    <frame src="${frameLink}" />
+    <noframes>
+        <body>
+            <p>Your browser does not support frames. Please update your browser.</p>
+        </body>
+    </noframes>
+</frameset>
+</html>`;
+
+            const blob = new Blob([code], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'template.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
